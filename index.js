@@ -1,22 +1,23 @@
-const http = require("http");
+//console.log("Hello express Start from Aimerz");
 
-const server = http.createServer(function(req, res){
-    //res.write("This is the firts server ! Created By viit morankar");
-      //res.end();
-      
-    if(req.url === "/"){
-         res.write("You are in the Home page");
-        res.end();
-    }else if (req.url === "/about"){
-        res.write("You are in the about page");
-        res.end();
-    }else{
-         res.write("Page Not Found");
-         res.end();
-    }
-    
-});
+const express = require('express')
+const app = express()
+const port = 3000
 
-server.listen(3000, function(){
-    console.log("Server Started");
-});
+app.use(express.json())
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World! Byy')
+// })
+
+// app.post('/', (req, res) => {
+//   res.send(req.body)
+// })
+
+app.post('/', (req, res) => {
+  res.send(req.query)
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
